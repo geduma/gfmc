@@ -40,7 +40,6 @@ body>footer {
 footer {
   bottom: 0;
   width: 100%;
-  position: absolute;
   font-size: 12px !important;
 }
 
@@ -108,4 +107,10 @@ a.gcode {
 .disabled:hover{
   cursor: default;
   text-decoration: none;
+}
+
+@media (min-height: 700px) {
+  footer {
+    position: absolute;
+  }
 }
