@@ -6,15 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format --write ."
   },
   "devDependencies": {
-    "standard": "^17.0.0",
+    "@biomejs/biome": "^2.6.5",
     "vite": "^7.1.2"
-  },
-  "eslintConfig": {
-    "extends": [
-      "./node_modules/standard/eslintrc.json"
-    ]
   }
 }

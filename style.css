@@ -13,6 +13,8 @@ body {
   line-height: 1.5;
   display: grid;
   grid-template-columns: 1fr min(45rem, 90%) 1fr;
+  grid-template-rows: 1fr auto;
+  min-height: 100dvh;
   margin: 0;
 }
 
@@ -33,14 +35,9 @@ body>footer {
   margin-top: 4rem;
   padding: 2rem 1rem 1.5rem;
   color: #ababab;
-  font-size: .9rem;
+  font-size: 12px;
   text-align: center;
-}
-
-footer {
-  bottom: 0;
   width: 100%;
-  font-size: 12px !important;
 }
 
 section {
@@ -68,7 +65,7 @@ a {
   display: flex;
   justify-content: center;
   height: 4rem;
-  color: #f5f7ff !important;
+  color: #f5f7ff;
 }
 
 a:hover {
@@ -87,30 +84,112 @@ a.github {
   background-color: #34465D;
 }
 
-a.blog {
-  background-color: #E4405F;
+.app-accordion {
+  width: 100%;
+  background-color: #7E57C2;
+  color: #f5f7ff;
 }
 
-a.snippet-vault {
+.app-accordion.code-editor {
   background-color: #6272A4;
 }
 
-a.gcode {
-  background-color: #7E57C2;
+.app-accordion>summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  padding: 0 3rem;
+  color: #f5f7ff;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
 }
 
-.disabled {
-  opacity: .3;
-  pointer-events: none;
+.app-accordion>summary::-webkit-details-marker {
+  display: none;
 }
 
-.disabled:hover{
-  cursor: default;
-  text-decoration: none;
+.app-accordion>summary::marker {
+  content: '';
 }
 
-@media (min-height: 700px) {
-  footer {
-    position: absolute;
+.app-accordion>summary:hover {
+  background-color: rgba(255, 255, 255, .06);
+}
+
+.app-accordion>summary:active {
+  background-color: rgba(0, 0, 0, .08);
+}
+
+.app-accordion .chevron {
+  position: absolute;
+  right: 1.1rem;
+  font-size: .8rem;
+  transition: transform .25s ease;
+}
+
+.app-accordion[open] .chevron {
+  transform: rotate(180deg);
+}
+
+.app-accordion .accordion-panel {
+  margin: 0 1.25rem;
+  padding: 1rem 0 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, .18);
+  text-align: left;
+}
+
+.app-accordion[open] .accordion-panel {
+  animation: accordion-reveal .22s ease-out;
+}
+
+.app-accordion .accordion-panel p {
+  margin: 0 0 .9rem;
+  font-size: .95rem;
+  opacity: .92;
+}
+
+a.app-link {
+  display: inline-flex;
+  height: auto;
+  padding: .6rem 1rem;
+  background-color: rgba(0, 0, 0, .28);
+  font-size: .9rem;
+}
+
+a.app-link:hover {
+  background-color: rgba(0, 0, 0, .4);
+  opacity: 1;
+}
+
+a.app-link:active {
+  opacity: .8;
+}
+
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
+
+@keyframes accordion-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-.35rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-accordion .chevron,
+  .app-accordion .accordion-panel {
+    transition: none;
+    animation: none;
   }
 }
