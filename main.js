@@ -25,10 +25,15 @@ const translations = {
     'apps.section.title': 'Projects & Experiments',
     'apps.section.intro': 'Things I build and explore.',
     'apps.status.active': 'Active',
+  'apps.status.selfhosted': 'Self-hosted',
     'apps.snippet.name': 'Snippet Vault',
     'apps.snippet.desc':
       'A curated space to store, organize, and reuse code snippets when you need them.',
     'apps.snippet.cta': 'Open Snippet Vault',
+    'apps.relio.name': 'Relio',
+    'apps.relio.desc':
+      'Personal-use, self-hosted LLM proxy centralizing multiple providers behind a single OpenAI-compatible API.',
+    'apps.relio.cta': 'Open Relio',
     'apps.editor.name': 'Online Code Editor',
     'apps.editor.desc':
       'A lightweight browser editor to write, run, and experiment with code without leaving the tab.',
@@ -72,10 +77,15 @@ const translations = {
     'apps.section.title': 'Proyectos y Experimentos',
     'apps.section.intro': 'Cosas que construyo y exploro.',
     'apps.status.active': 'Activo',
+  'apps.status.selfhosted': 'Autoalojado',
     'apps.snippet.name': 'Snippet Vault',
     'apps.snippet.desc':
       'Un espacio curado para guardar, organizar y reutilizar fragmentos de código cuando los necesites.',
     'apps.snippet.cta': 'Abrir Snippet Vault',
+    'apps.relio.name': 'Relio',
+    'apps.relio.desc':
+      'Personal-use, self-hosted LLM proxy centralizing multiple providers behind a single OpenAI-compatible API.',
+    'apps.relio.cta': 'Open Relio',
     'apps.editor.name': 'Editor de código',
     'apps.editor.desc':
       'Un editor ligero en el navegador para escribir, ejecutar y experimentar con código sin salir de la pestaña.',

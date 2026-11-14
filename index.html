@@ -1,169 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/geduma-circle-logo.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/geduma-circle-logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/geduma-circle-logo.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title data-i18n="meta.title">Felipe Mariño — Senior Software Engineer</title>
-    <meta name="description" content="Senior software engineer with 10+ years building and scaling software solutions, connecting product engineering with modern technologies and AI." data-i18n-content="meta.description">
-    <meta property="og:description" content="Senior software engineer with 10+ years building and scaling software solutions, connecting product engineering with modern technologies and AI." data-i18n-content="meta.description">
-    <meta property="og:title" content="Felipe Mariño — Senior Software Engineer" data-i18n-content="meta.title">
-    <meta property="og:locale" content="en_US" data-i18n-content="meta.og_locale">
-    <meta property="og:site_name" content="Geduma">
-    <link rel="canonical" href="https://geduma.com/">
-    <meta name="application-name" content="geduma.com">
-    <meta property="og:url" content="https://geduma.com/">
-    <meta property="og:type" content="website">
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="topbar">
-        <span class="brand" data-i18n="brand.name">Geduma</span>
-        <fieldset class="lang-switch">
-          <legend class="visually-hidden" data-i18n="lang.toggle.label">Language</legend>
-          <button type="button" class="lang-option" data-lang="en" aria-pressed="true" data-i18n="lang.toggle.en">EN</button>
-          <button type="button" class="lang-option" data-lang="es" aria-pressed="false" data-i18n="lang.toggle.es">ES</button>
-        </fieldset>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/geduma-circle-logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/geduma-circle-logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/geduma-circle-logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title data-i18n="meta.title">Felipe Mariño — Senior Software Engineer</title>
+  <meta name="description"
+    content="Senior software engineer with 10+ years building and scaling software solutions, connecting product engineering with modern technologies and AI."
+    data-i18n-content="meta.description">
+  <meta property="og:description"
+    content="Senior software engineer with 10+ years building and scaling software solutions, connecting product engineering with modern technologies and AI."
+    data-i18n-content="meta.description">
+  <meta property="og:title" content="Felipe Mariño — Senior Software Engineer" data-i18n-content="meta.title">
+  <meta property="og:locale" content="en_US" data-i18n-content="meta.og_locale">
+  <meta property="og:site_name" content="Geduma">
+  <link rel="canonical" href="https://geduma.com/">
+  <meta name="application-name" content="geduma.com">
+  <meta property="og:url" content="https://geduma.com/">
+  <meta property="og:type" content="website">
+  <style>
+    /* Critical CSS - prevents FOUC with app background while styles load */
+    :root {
+      --bg: #1e222b;
+      --surface: #262b36;
+      --text: #e8edf7;
+      --text-muted: #aeb8c8;
+      --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html {
+      background-color: var(--bg);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.65;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transition: opacity 120ms ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    .loading-skeleton {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 180ms ease, visibility 180ms ease;
+    }
+
+    .loading-skeleton.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loading-pulse {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, var(--surface) 25%, var(--text-muted) 50%, var(--surface) 75%);
+      background-size: 200% 100%;
+      animation: pulse-shimmer 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-shimmer {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="loading-skeleton" aria-hidden="true">
+    <div class="loading-pulse"></div>
+  </div>
+  <script>
+    (function () {
+      var skeleton = document.querySelector('.loading-skeleton');
+      var hideSkeleton = function () {
+        skeleton.classList.add('hidden');
+        document.body.classList.add('loaded');
+      };
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', hideSkeleton);
+      } else {
+        hideSkeleton();
+      }
+      // Fallback: force show after 3s even if styles haven't loaded
+      setTimeout(hideSkeleton, 3000);
+    })();
+  </script>
+  <header class="site-header">
+    <div class="topbar">
+      <span class="brand" data-i18n="brand.name">Geduma</span>
+      <fieldset class="lang-switch">
+        <legend class="visually-hidden" data-i18n="lang.toggle.label">Language</legend>
+        <button type="button" class="lang-option" data-lang="en" aria-pressed="true"
+          data-i18n="lang.toggle.en">EN</button>
+        <button type="button" class="lang-option" data-lang="es" aria-pressed="false"
+          data-i18n="lang.toggle.es">ES</button>
+      </fieldset>
+    </div>
+    <div class="hero">
+      <h1 data-i18n="hero.name_role">Felipe Mariño — Senior Software Engineer</h1>
+      <p class="hero-bio" data-i18n="hero.bio">10+ years building and scaling software solutions. Today I specialize in
+        connecting product engineering with modern technologies and Artificial Intelligence to accelerate business ideas
+        and innovative models.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#consulting" data-i18n="hero.cta_primary">Let's talk</a>
+        <nav class="profile-links" aria-label="Profiles" data-i18n-aria-label="profile.nav_label">
+          <a class="profile-link" href="https://linkedin.com/in/geduma" target="_blank" rel="noopener">
+            <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M6.94 8.5H4.06V20h2.88V8.5zM5.5 4a1.67 1.67 0 1 0 0 3.34A1.67 1.67 0 0 0 5.5 4zM20 13.4c0-3.1-1.66-4.54-3.87-4.54-1.78 0-2.58.98-3.03 1.67V8.5h-2.88V20h2.88v-6.42c0-1.7.32-3.34 2.42-3.34 2.07 0 2.1 1.94 2.1 3.45V20H20v-6.6z" />
+            </svg>
+            <span data-i18n="profile.linkedin">LinkedIn</span>
+            <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
+          </a>
+          <a class="profile-link" href="https://github.com/geduma" target="_blank" rel="noopener">
+            <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M12 2.5a9.5 9.5 0 0 0-3 18.52c.48.09.65-.21.65-.46v-1.8c-2.67.58-3.23-1.13-3.23-1.13-.44-1.11-1.07-1.4-1.07-1.4-.87-.6.07-.59.07-.59.97.07 1.48 1 1.48 1 .86 1.47 2.25 1.05 2.8.8.09-.62.34-1.05.61-1.29-2.13-.24-4.37-1.07-4.37-4.75 0-1.05.37-1.9.99-2.57-.1-.24-.43-1.22.09-2.54 0 0 .81-.26 2.65.98a9.2 9.2 0 0 1 4.83 0c1.84-1.24 2.65-.98 2.65-.98.52 1.32.19 2.3.09 2.54.62.67.99 1.52.99 2.57 0 3.69-2.25 4.5-4.39 4.74.35.3.65.88.65 1.78v2.64c0 .25.17.55.66.46A9.5 9.5 0 0 0 12 2.5z" />
+            </svg>
+            <span data-i18n="profile.github">GitHub</span>
+            <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
+          </a>
+        </nav>
       </div>
-      <div class="hero">
-        <h1 data-i18n="hero.name_role">Felipe Mariño — Senior Software Engineer</h1>
-        <p class="hero-bio" data-i18n="hero.bio">10+ years building and scaling software solutions. Today I specialize in connecting product engineering with modern technologies and Artificial Intelligence to accelerate business ideas and innovative models.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#consulting" data-i18n="hero.cta_primary">Let's talk</a>
-          <nav class="profile-links" aria-label="Profiles" data-i18n-aria-label="profile.nav_label">
-            <a class="profile-link" href="https://linkedin.com/in/geduma" target="_blank" rel="noopener">
-              <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path fill="currentColor" d="M6.94 8.5H4.06V20h2.88V8.5zM5.5 4a1.67 1.67 0 1 0 0 3.34A1.67 1.67 0 0 0 5.5 4zM20 13.4c0-3.1-1.66-4.54-3.87-4.54-1.78 0-2.58.98-3.03 1.67V8.5h-2.88V20h2.88v-6.42c0-1.7.32-3.34 2.42-3.34 2.07 0 2.1 1.94 2.1 3.45V20H20v-6.6z" />
-              </svg>
-              <span data-i18n="profile.linkedin">LinkedIn</span>
-              <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
-            </a>
-            <a class="profile-link" href="https://github.com/geduma" target="_blank" rel="noopener">
-              <svg class="profile-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path fill="currentColor" d="M12 2.5a9.5 9.5 0 0 0-3 18.52c.48.09.65-.21.65-.46v-1.8c-2.67.58-3.23-1.13-3.23-1.13-.44-1.11-1.07-1.4-1.07-1.4-.87-.6.07-.59.07-.59.97.07 1.48 1 1.48 1 .86 1.47 2.25 1.05 2.8.8.09-.62.34-1.05.61-1.29-2.13-.24-4.37-1.07-4.37-4.75 0-1.05.37-1.9.99-2.57-.1-.24-.43-1.22.09-2.54 0 0 .81-.26 2.65.98a9.2 9.2 0 0 1 4.83 0c1.84-1.24 2.65-.98 2.65-.98.52 1.32.19 2.3.09 2.54.62.67.99 1.52.99 2.57 0 3.69-2.25 4.5-4.39 4.74.35.3.65.88.65 1.78v2.64c0 .25.17.55.66.46A9.5 9.5 0 0 0 12 2.5z" />
-              </svg>
-              <span data-i18n="profile.github">GitHub</span>
-              <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
-            </a>
-          </nav>
-        </div>
+    </div>
+  </header>
+  <main>
+    <section class="section apps-section" aria-labelledby="apps-title">
+      <h2 id="apps-title" data-i18n="apps.section.title">Projects & Experiments</h2>
+      <p class="section-intro" data-i18n="apps.section.intro">Things I build and explore.</p>
+      <div class="apps-list">
+        <details class="app-row relio" name="project-apps">
+          <summary class="app-row__summary">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" rx="5" x="2" y="2" fill="none" />
+                <path d="M6 5L6 15M6 5C6 5 13 5 13 10L16 15" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </g>
+            </svg>
+            <span class="app-name" data-i18n="apps.relio.name">Relio</span>
+            <span class="app-status app-status--selfhosted" data-i18n="apps.status.selfhosted">Self-hosted</span>
+            <span class="app-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="app-row__panel">
+            <div class="app-row__panel-inner">
+              <p data-i18n="apps.relio.desc">Personal-use, self-hosted LLM proxy centralizing multiple providers behind
+                a single OpenAI-compatible API.</p>
+              <a class="app-link" href="https://github.com/geduma/relio" target="_blank" rel="noopener">
+                <span data-i18n="apps.relio.cta">Open Relio</span>
+                <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
+              </a>
+            </div>
+          </div>
+        </details>
+        <details class="app-row vertida" name="project-apps">
+          <summary class="app-row__summary">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 8h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5z" />
+                <path d="M16 9h1.5a2.5 2.5 0 0 1 0 5H16" />
+                <path d="M7 4.5V6M10.5 4.5V6M14 4.5V6" />
+                <path d="M5 21h11" />
+              </g>
+            </svg>
+            <span class="app-name" data-i18n="apps.vertida.name">Vertida</span>
+  <span class="app-status" data-i18n="apps.status.active">Active</span>
+            <span class="app-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="app-row__panel">
+            <div class="app-row__panel-inner">
+              <p data-i18n="apps.vertida.desc">Brew specialty coffee at home with guided recipes and a phase-by-phase
+                timer, fully offline.</p>
+              <a class="app-link" href="https://vertida.geduma.com/" target="_blank" rel="noopener">
+                <span data-i18n="apps.vertida.cta">Open Vertida</span>
+                <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
+              </a>
+            </div>
+          </div>
+        </details>
+        <details class="app-row gnotes" name="project-apps">
+          <summary class="app-row__summary">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6.5 3.5h7.5L17.5 7v13.5h-11z" />
+                <path d="M14 3.5V7h3.5" />
+                <path d="M9.5 11h5M9.5 14h5M9.5 17h3" />
+              </g>
+            </svg>
+            <span class="app-name" data-i18n="apps.gnotes.name">GNotes</span>
+  <span class="app-status" data-i18n="apps.status.active">Active</span>
+            <span class="app-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="app-row__panel">
+            <div class="app-row__panel-inner">
+              <p data-i18n="apps.gnotes.desc">Minimalist, fast, self-hosted notes with a WYSIWYG editor, search across
+                titles, bodies, and tags, offline-first storage, and optional OAuth sync.</p>
+              <a class="app-link" href="https://notes.geduma.com/" target="_blank" rel="noopener">
+                <span data-i18n="apps.gnotes.cta">Open GNotes</span>
+                <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
+              </a>
+            </div>
+          </div>
+        </details>
+        <details class="app-row code-editor" name="project-apps">
+          <summary class="app-row__summary">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="5.5" width="14" height="12.5" rx="2" />
+                <path d="M5 9.5h14" />
+                <path d="M9 12.5l-2 2 2 2M15 12.5l2 2-2 2M13 11.5l-2.5 6" />
+              </g>
+            </svg>
+            <span class="app-name" data-i18n="apps.editor.name">Online Code Editor</span>
+  <span class="app-status" data-i18n="apps.status.active">Active</span>
+            <span class="app-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="app-row__panel">
+            <div class="app-row__panel-inner">
+              <p data-i18n="apps.editor.desc">A lightweight browser editor to write, run, and experiment with code
+                without leaving the tab.</p>
+              <a class="app-link" href="https://code.geduma.com" target="_blank" rel="noopener">
+                <span data-i18n="apps.editor.cta">Open Online Code Editor</span>
+                <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
+              </a>
+            </div>
+          </div>
+        </details>
+        <details class="app-row snippet-vault" name="project-apps">
+          <summary class="app-row__summary">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6.5 3.5h11v17l-5.5-3.8-5.5 3.8z" />
+                <path d="M10.2 9.2 8.2 11.2l2 2M13.8 9.2l2 2-2 2" />
+              </g>
+            </svg>
+            <span class="app-name" data-i18n="apps.snippet.name">Snippet Vault</span>
+  <span class="app-status" data-i18n="apps.status.active">Active</span>
+            <span class="app-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="app-row__panel">
+            <div class="app-row__panel-inner">
+              <p data-i18n="apps.snippet.desc">A curated space to store, organize, and reuse code snippets when you need
+                them.</p>
+              <a class="app-link" href="https://snippet.geduma.com" target="_blank" rel="noopener">
+                <span data-i18n="apps.snippet.cta">Open Snippet Vault</span>
+                <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
+              </a>
+            </div>
+          </div>
+        </details>
       </div>
-    </header>
-    <main>
-      <section class="section apps-section" aria-labelledby="apps-title">
-        <h2 id="apps-title" data-i18n="apps.section.title">Projects &amp; Experiments</h2>
-        <p class="section-intro" data-i18n="apps.section.intro">Things I build and explore.</p>
-        <div class="apps-list">
-          <details class="app-row vertida" name="project-apps">
-            <summary class="app-row__summary">
-              <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 8h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5z" />
-                  <path d="M16 9h1.5a2.5 2.5 0 0 1 0 5H16" />
-                  <path d="M7 4.5V6M10.5 4.5V6M14 4.5V6" />
-                  <path d="M5 21h11" />
-                </g>
-              </svg>
-              <span class="app-name" data-i18n="apps.vertida.name">Vertida</span>
-              <span class="app-status" data-i18n="apps.status.active">Active</span>
-              <span class="app-toggle" aria-hidden="true"></span>
-            </summary>
-            <div class="app-row__panel">
-              <div class="app-row__panel-inner">
-                <p data-i18n="apps.vertida.desc">Brew specialty coffee at home with guided recipes and a phase-by-phase timer, fully offline.</p>
-                <a class="app-link" href="https://vertida.geduma.com/" target="_blank" rel="noopener">
-                  <span data-i18n="apps.vertida.cta">Open Vertida</span>
-                  <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
-                </a>
-              </div>
-            </div>
-          </details>
-          <details class="app-row gnotes" name="project-apps">
-            <summary class="app-row__summary">
-              <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6.5 3.5h7.5L17.5 7v13.5h-11z" />
-                  <path d="M14 3.5V7h3.5" />
-                  <path d="M9.5 11h5M9.5 14h5M9.5 17h3" />
-                </g>
-              </svg>
-              <span class="app-name" data-i18n="apps.gnotes.name">GNotes</span>
-              <span class="app-status" data-i18n="apps.status.active">Active</span>
-              <span class="app-toggle" aria-hidden="true"></span>
-            </summary>
-            <div class="app-row__panel">
-              <div class="app-row__panel-inner">
-                <p data-i18n="apps.gnotes.desc">Minimalist, fast, self-hosted notes with a WYSIWYG editor, search across titles, bodies, and tags, offline-first storage, and optional OAuth sync.</p>
-                <a class="app-link" href="https://notes.geduma.com/" target="_blank" rel="noopener">
-                  <span data-i18n="apps.gnotes.cta">Open GNotes</span>
-                  <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
-                </a>
-              </div>
-            </div>
-          </details>
-          <details class="app-row code-editor" name="project-apps">
-            <summary class="app-row__summary">
-              <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="5" y="5.5" width="14" height="12.5" rx="2" />
-                  <path d="M5 9.5h14" />
-                  <path d="M9 12.5l-2 2 2 2M15 12.5l2 2-2 2M13 11.5l-2.5 6" />
-                </g>
-              </svg>
-              <span class="app-name" data-i18n="apps.editor.name">Online Code Editor</span>
-              <span class="app-status" data-i18n="apps.status.active">Active</span>
-              <span class="app-toggle" aria-hidden="true"></span>
-            </summary>
-            <div class="app-row__panel">
-              <div class="app-row__panel-inner">
-                <p data-i18n="apps.editor.desc">A lightweight browser editor to write, run, and experiment with code without leaving the tab.</p>
-                <a class="app-link" href="https://code.geduma.com" target="_blank" rel="noopener">
-                  <span data-i18n="apps.editor.cta">Open Online Code Editor</span>
-                  <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
-                </a>
-              </div>
-            </div>
-          </details>
-          <details class="app-row snippet-vault" name="project-apps">
-            <summary class="app-row__summary">
-              <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6.5 3.5h11v17l-5.5-3.8-5.5 3.8z" />
-                  <path d="M10.2 9.2 8.2 11.2l2 2M13.8 9.2l2 2-2 2" />
-                </g>
-              </svg>
-              <span class="app-name" data-i18n="apps.snippet.name">Snippet Vault</span>
-              <span class="app-status" data-i18n="apps.status.active">Active</span>
-              <span class="app-toggle" aria-hidden="true"></span>
-            </summary>
-            <div class="app-row__panel">
-              <div class="app-row__panel-inner">
-                <p data-i18n="apps.snippet.desc">A curated space to store, organize, and reuse code snippets when you need them.</p>
-                <a class="app-link" href="https://snippet.geduma.com" target="_blank" rel="noopener">
-                  <span data-i18n="apps.snippet.cta">Open Snippet Vault</span>
-                  <span class="visually-hidden" data-i18n="a11y.new_tab">Opens in a new tab</span>
-                </a>
-              </div>
-            </div>
-          </details>
-        </div>
-      </section>
-      <section id="consulting" class="section consulting-section" aria-labelledby="consulting-title" tabindex="-1">
-        <h2 id="consulting-title" data-i18n="consulting.section.title">Consulting</h2>
-        <p class="consulting-context" data-i18n="consulting.context">If you have a business idea, are building a startup, or want a technical perspective on integrating Artificial Intelligence into your workflows, let's talk. I enjoy collaborating selectively with curious minds and founders who want to build with strong technical judgment.</p>
-        <div class="contact-row">
-          <button type="button" class="button button-primary contact-button" disabled aria-describedby="contact-status" data-i18n="consulting.cta.contact">Email me</button>
-          <span class="contact-status" id="contact-status" data-i18n="consulting.status">Coming soon</span>
-        </div>
-        <p class="consulting-note" data-i18n="consulting.antispam">Prefer to write directly? Send me an email with a brief description of your idea or project and I'll get back to you as soon as possible.</p>
-        <p class="consulting-note" data-i18n="consulting.identity_filter">You can also reach out via LinkedIn for identity verification.</p>
-      </section>
-    </main>
-    <footer class="site-footer">
-      <p data-i18n="footer.byline">@geduma</p>
-    </footer>
-    <script type="module" src="/main.js"></script>
-  </body>
+    </section>
+    <section id="consulting" class="section consulting-section" aria-labelledby="consulting-title" tabindex="-1">
+      <h2 id="consulting-title" data-i18n="consulting.section.title">Consulting</h2>
+      <p class="consulting-context" data-i18n="consulting.context">If you have a business idea, are building a startup,
+        or want a technical perspective on integrating Artificial Intelligence into your workflows, let's talk. I enjoy
+        collaborating selectively with curious minds and founders who want to build with strong technical judgment.</p>
+      <div class="contact-row">
+        <button type="button" class="button button-primary contact-button" disabled aria-describedby="contact-status"
+          data-i18n="consulting.cta.contact">Email me</button>
+        <span class="contact-status" id="contact-status" data-i18n="consulting.status">Coming soon</span>
+      </div>
+      <p class="consulting-note" data-i18n="consulting.antispam">Prefer to write directly? Send me an email with a brief
+        description of your idea or project and I'll get back to you as soon as possible.</p>
+      <p class="consulting-note" data-i18n="consulting.identity_filter">You can also reach out via LinkedIn for identity
+        verification.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p data-i18n="footer.byline">@geduma</p>
+  </footer>
+  <script type="module" src="/main.js"></script>
+</body>
+
 </html>
