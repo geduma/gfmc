@@ -21,97 +21,36 @@
   <meta name="application-name" content="geduma.com">
   <meta property="og:url" content="https://geduma.com/">
   <meta property="og:type" content="website">
-  <style>
-    /* Critical CSS - prevents FOUC with app background while styles load */
-    :root {
-      --bg: #1e222b;
-      --surface: #262b36;
-      --text: #e8edf7;
-      --text-muted: #aeb8c8;
-      --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    html {
-      background-color: var(--bg);
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-size: 1rem;
-      line-height: 1.65;
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      transition: opacity 120ms ease;
-    }
-
-    body.loaded {
-      opacity: 1;
-    }
-
-    .loading-skeleton {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 180ms ease, visibility 180ms ease;
-    }
-
-    .loading-skeleton.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .loading-pulse {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: linear-gradient(90deg, var(--surface) 25%, var(--text-muted) 50%, var(--surface) 75%);
-      background-size: 200% 100%;
-      animation: pulse-shimmer 1.4s ease-in-out infinite;
-    }
-
-    @keyframes pulse-shimmer {
-      0% {
-        background-position: 200% 0;
-      }
-
-      100% {
-        background-position: -200% 0;
-      }
-    }
-  </style>
+  <meta property="og:image" content="https://geduma.com/geduma-circle-logo.png">
+  <meta property="og:image:width" content="180">
+  <meta property="og:image:height" content="180">
+  <meta property="og:image:alt" content="Felipe Mariño profile picture">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@geduma">
+  <meta name="twitter:image" content="https://geduma.com/geduma-circle-logo.png">
+  <link rel="alternate" hreflang="en" href="https://geduma.com/">
+  <link rel="alternate" hreflang="es" href="https://geduma.com/?lang=es">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Felipe Mariño",
+    "url": "https://geduma.com/",
+    "sameAs": [
+      "https://linkedin.com/in/geduma",
+      "https://github.com/geduma"
+    ],
+    "jobTitle": "Senior Software Engineer",
+    "description": "Senior software engineer with 10+ years building and scaling software solutions, connecting product engineering with modern technologies and AI.",
+    "knowsAbout": ["Software Engineering", "Artificial Intelligence", "LLM Integration", "TypeScript", "React", "Product Engineering"],
+    "image": "https://geduma.com/geduma-circle-logo.png"
+  }
+  </script>
 </head>
 
 <body>
-  <div class="loading-skeleton" aria-hidden="true">
-    <div class="loading-pulse"></div>
-  </div>
-  <script>
-    (function () {
-      var skeleton = document.querySelector('.loading-skeleton');
-      var hideSkeleton = function () {
-        skeleton.classList.add('hidden');
-        document.body.classList.add('loaded');
-      };
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', hideSkeleton);
-      } else {
-        hideSkeleton();
-      }
-      // Fallback: force show after 3s even if styles haven't loaded
-      setTimeout(hideSkeleton, 3000);
-    })();
-  </script>
-  <header class="site-header">
+    <header class="site-header">
     <div class="topbar">
       <span class="brand" data-i18n="brand.name">Geduma</span>
       <fieldset class="lang-switch">

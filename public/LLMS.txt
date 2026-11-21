@@ -1,0 +1,29 @@
+# Geduma.com - AI Discoverability Guide
+
+This site is a personal portfolio for Felipe Mariño, a software engineer specializing in AI and product engineering.
+
+## Pages
+- / — Main portfolio page
+- /#consulting — Section describing consulting availability and services
+
+## Topics Covered
+- Relio (LLM proxy)
+- Vertida (specialty coffee guide)
+- GNotes (self-hosted notes)
+- Online Code Editor
+- Snippet Vault
+
+## Stack
+- HTML5, CSS3, JavaScript (ES Modules)
+- Vite (build tool)
+- Biome (lint/format)
+- Git
+
+## Contact
+LinkedIn: https://linkedin.com/in/geduma
+
+## AI Assistant Use Cases
+- Understanding this portfolio's structure
+- Finding links to specific projects
+- Exploring the tech stack used
+- Locating contact information
