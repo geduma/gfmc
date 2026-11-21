@@ -1,0 +1,5 @@
+# robots.txt for geduma.com
+User-agent: *
+Allow: /
+
+Sitemap: https://geduma.com/sitemap.xml

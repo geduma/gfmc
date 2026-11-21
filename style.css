@@ -313,6 +313,10 @@ main {
   border-block-end: 1px solid var(--rule);
 }
 
+.app-row:last-child {
+  border-block-end: none;
+}
+
 .app-row__summary {
   display: grid;
   grid-template-columns:
@@ -869,7 +873,7 @@ summary:focus-visible {
   }
 
   .app-status::before,
-.app-status--selfhosted::before,
+  .app-status--selfhosted::before,
   .contact-status::before {
     background-color: CanvasText;
   }
